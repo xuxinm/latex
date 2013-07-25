@@ -1,4 +1,4 @@
-resmini
-=======
+LaTeX classes for
 
-LaTeX class for resume
+Resume : resume.cls
+Cover letter : cover.cls
