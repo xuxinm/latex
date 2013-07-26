@@ -1,49 +1,61 @@
 % Resume class (Minimalism style)
 %
 % Author      : Xuxin Ma <maa.xuxin@gmail.com>
-% Last update : Jul 21 2013
+% Last update : July 2013
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{resume}[2013/07/22 Resume class]
+\ProvidesClass{resume}[2013/07/22 Simple resume class]
 
+%% san-serif (helvetica)
+\newcommand{\@fontsans}{%
+\renewcommand*\familydefault{\sfdefault}%
+}
+%% serif (palatino)
+\newcommand{\@fontroman}{%
+\renewcommand*\familydefault{\rmdefault}%
+\linespread{1.05}%
+}
+
+\DeclareOption{sans}{\@fontsans}
+\DeclareOption{roman}{\@fontroman}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
-
-\LoadClass[a4paper,twoside]{article}
+\LoadClass{article}
 
 %% borders
-\usepackage{framed}
+\RequirePackage{framed}
 
 %% if/then/else
-\usepackage{etoolbox}
+\RequirePackage{etoolbox}
 
 %% symbols
-\usepackage{marvosym}
+\RequirePackage{marvosym}
 
 %% margins (parameterize later)
-\usepackage[hmargin={.75in,.75in},vmargin={.75in,.75in}]{geometry}
+\RequirePackage[hmargin={.75in,.75in},vmargin={.75in,.75in}]{geometry}
+
+%% no page number
+\RequirePackage{nopageno}
+
+%% no indentation
+\setlength{\parindent}{0pt}
 
 %% fonts
-%% \usepackage[default]{cantarell}
-%% \usepackage[T1]{fontenc}
+%% fonts
+\RequirePackage[T1]{fontenc}
+\RequirePackage[scaled]{helvet}
+\RequirePackage[sc]{mathpazo}
 
 %% colours
-\usepackage[svgnames]{xcolor}
+\RequirePackage[svgnames]{xcolor}
 \definecolor{sectionshade}{gray}{.85}
 
 %% tabularize
-\usepackage{tabularx}
+\RequirePackage{tabularx}
 \newcommand\VRule{\color{gray}\vrule width 1pt}
 
 %% figures
-\usepackage[pdftex]{graphicx}
-
-%% no page number
-\usepackage{nopageno}
-%% no page styles
-\pagestyle{plain}
-%% no indentation
-\setlength{\parindent}{0pt}
+\RequirePackage[pdftex]{graphicx}
 
 %% name
 \newcommand*{\name}[1]{\def\@name{#1}}
@@ -53,13 +65,6 @@
 \newcommand*{\addr}[1]{\def\@addr{#1}}
 \newcommand*{\email}[1]{\def\@email{#1}}
 \newcommand*{\phone}[1]{\def\@phone{#1}}
-
-%% footer
-%% \newcommand{\text@foot}[1]{\so{\mbox{\textsc{\textrm{#1}}}}}
-%% \cofoot{%
-%% \text@foot{\@addr}\\%
-%% \text@foot{{\Large\Telefon} \@phone~~~{\Large\Letter} \@email}%
-%% }
 
 %% make title 
 %% Need to improve vertical adjustment
@@ -104,7 +109,7 @@
 %% make section title
 \newcommand{\ressection}[1]{%
 \begin{resshaded}
-\raggedright\Large\textbf{\textsc{#1}}%
+\raggedright\large\textbf{\textsc{#1}}%
 \end{resshaded}
 }
 
