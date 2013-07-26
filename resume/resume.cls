@@ -13,7 +13,7 @@
 %% serif (palatino)
 \newcommand{\@fontroman}{%
 \renewcommand*\familydefault{\rmdefault}%
-\linespread{1.05}%
+%% \linespread{1.05}% Palatino needs slightly more line spacing
 }
 
 \DeclareOption{sans}{\@fontsans}
@@ -57,6 +57,12 @@
 %% figures
 \RequirePackage[pdftex]{graphicx}
 
+%% reduce itemize line spacing
+\RequirePackage{enumitem}
+\setlist{listsep=.1em}
+\setlist{topsep=.1em}
+\setlist{itemsep=.2em}
+
 %% name
 \newcommand*{\name}[1]{\def\@name{#1}}
 %% short text below name
@@ -69,22 +75,24 @@
 %% make title 
 %% Need to improve vertical adjustment
 \newcommand{\restitle}{%
-\begin{minipage}[ht]{\textwidth}
+\begin{minipage}{\textwidth}
 %% left half
-\begin{minipage}[ht]{.45\textwidth}
+\begin{minipage}[b]{.45\textwidth}
 \raggedright%
 \ifdefempty{\@name}{\relax}{\Huge\textbf{\textsc{\@name}}\\[.5em]}
 \ifdefempty{\@subname}{\relax}{\normalsize\@subname}
+\vspace{0pt}
 \end{minipage}
 \hfill
 %% right half
-\begin{minipage}[ht]{.45\textwidth}
+\begin{minipage}[b]{.45\textwidth}
 \raggedleft%
-\ifdefempty{\@addr}{\relax}{\textsc{\@addr}\\[1em]}
+\ifdefempty{\@addr}{\relax}{\textsc{\@addr}\\[.2em]}
 \ifdefempty{\@phone}{\relax}{\Telefon~~\@phone\\}
 \ifdefempty{\@email}{\relax}{\Letter~~\@email}
+\vspace{0pt}
 \end{minipage}
-\vspace{2em}
+\vspace{1em}
 \end{minipage}
 %% closing bar
 \rule{\linewidth}{1pt}
@@ -108,9 +116,11 @@
 
 %% make section title
 \newcommand{\ressection}[1]{%
+\vspace{-.5em}
 \begin{resshaded}
 \raggedright\large\textbf{\textsc{#1}}%
 \end{resshaded}
+\vspace{-.5em}
 }
 
 %% two-column style entry-by-entry list
@@ -118,7 +128,21 @@
 %% #1 = width of column 1
 %% #2 = width of column 2
 \newenvironment{resentry}[2]{%
-\begin{tabular}{>{\raggedleft}p{#1}!{\VRule}p{#2}}}{%
+%% right-left alignment
+%% \begin{tabular}{>{\raggedleft}p{#1}!{\VRule}p{#2}}}{%
+%% left-left alignment
+\begin{tabular}{>{\raggedright}p{#1}!{\VRule}p{#2}}}{%
 \end{tabular}}
 
-%% \rule{\linewidth}{1pt}%
+%% Experience/Education entry
+%% #1 = position/degree
+%% #2 = name of company/institute
+%% #3 = time
+%% #4 = location
+\newcommand{\resexp}[4]{%
+{#1}\hfill{#3}\\[.2em]
+{#2}\hfill{#4}\\
+\vspace{-1em}
+%% closing bar
+%% \rule{\linewidth}{.5pt}
+}
