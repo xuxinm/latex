@@ -1,4 +1,6 @@
-LaTeX classes for
+LaTeX classes
+=============
 
-Resume : resume.cls
-Cover letter : cover.cls
+- resume.cls : Resume
+
+- cover.cls : Cover letter
