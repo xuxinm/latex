@@ -1,4 +1,4 @@
-% Resume class (Minimalism style)
+% Simple cover letter class
 %
 % Author      : Xuxin Ma <maa.xuxin@gmail.com>
 % Last update : July 2013
@@ -35,3 +35,6 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[scaled]{helvet}
 \RequirePackage[sc]{mathpazo}
+
+%% name
+\newcommand*{\name}[1]{\def\@name{#1}}

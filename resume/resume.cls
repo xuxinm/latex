@@ -1,4 +1,4 @@
-% Resume class (Minimalism style)
+% Simple resume class
 %
 % Author      : Xuxin Ma <maa.xuxin@gmail.com>
 % Last update : July 2013
@@ -40,7 +40,6 @@
 %% no indentation
 \setlength{\parindent}{0pt}
 
-%% fonts
 %% fonts
 \RequirePackage[T1]{fontenc}
 \RequirePackage[scaled]{helvet}
