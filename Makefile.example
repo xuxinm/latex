@@ -1,0 +1,34 @@
+# To compile example.tex into pdf
+# $ make pdf
+#
+# To clean
+# $ make clean
+#
+# To recompile
+# $ make renew
+
+rm     := rm -f
+touch  := touch
+latex  := pdflatex
+aux    := log toc lot lof idx ilg ind aux blg bbl ins
+
+target = example
+
+tex = $(target:%=%.tex)
+pdf = $(target:%=%.pdf)
+
+%.pdf : %.tex
+	$(latex) $< -o $@
+
+pdf : $(pdf) 
+renew : force $(pdf)
+
+force :
+	@$(touch) $(tex)
+auxclean :
+	@$(rm) $(addprefix *.,$(aux)) *~
+pdfclean :
+	@$(rm) $(addsuffix .pdf,$(target))
+clean : auxclean pdfclean
+
+.PHONY : force auxclean pdfclean clean pdf renew
