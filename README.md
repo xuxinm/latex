@@ -1,13 +1,15 @@
 Description
 ===========
 LaTeX templates for
-- notes  : short research notes
-- resume : resume and cover letters
+- notebook  : short research notes
+- resume    : resume and cover letters
 
 Usage
 =====
 1. Include current path to LaTeX template paths
- 
-   $ ln -s * $TEXMFHOME/tex/latex
+
+   $ cd latex
+   $ ln -s notebook $TEXMFHOME/tex
+   $ ln -s resume $TEXMFHOME/tex
 
 2. Compile LaTeX files
