@@ -6,10 +6,8 @@ LaTeX templates for
 
 Usage
 =====
-1. Include current path to LaTeX template paths
+1. Include into .bashrc the following line
 
-   $ cd latex
-   $ ln -s notebook $TEXMFHOME/tex
-   $ ln -s resume $TEXMFHOME/tex
+   $ export TEXMFHOME=~:$TEXMFHOME
 
 2. Compile LaTeX files
